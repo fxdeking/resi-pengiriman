@@ -1,0 +1,2 @@
+# resi pengiriman
+ ga tau
