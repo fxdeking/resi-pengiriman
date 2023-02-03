@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Kantor;
 
 class KantorController extends Controller
 {
@@ -13,7 +14,8 @@ class KantorController extends Controller
      */
     public function index()
     {
-        //
+        $kantors = Kantor::all();
+        return view('kantorpusat.index', compact('kantors'));
     }
 
     /**
@@ -23,7 +25,7 @@ class KantorController extends Controller
      */
     public function create()
     {
-        //
+        return view('kantorpusat.create');
     }
 
     /**
@@ -34,7 +36,21 @@ class KantorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            'NamaKantorPusat'=>'required|min:3|max:50',
+            'AlamatKantorPusat'=>'required|min:3'
+        ], ['NamaKantorPusat.required'=>'Isi nama kantor pusat terlebih dahulu',
+            'NamaKantorPusat.min'=>'Minimal 3 karakter',
+            'NamaKantorPusat.max'=>'Jangan lebih dari 50 karakter',
+            'AlamatKantorPusat.required'=>'Isi alamat kantor pusat terlebih dahulu',
+            'AlamatKantorPusat.min'=>'Minimal 3 karakter']);
+
+            Kantor::create([
+                'NamaKantorPusat' => $request->get('NamaKantorPusat'),
+                'AlamatKantorPusat' => $request->get('AlamatKantorPusat')
+              ]);
+
+            return redirect()->route('kan')->with('message', 'Kantor Pusat berhasil disimpan');
     }
 
     /**
@@ -56,7 +72,8 @@ class KantorController extends Controller
      */
     public function edit($id)
     {
-        //
+        $kantor = Kantor::find($id);
+        return view ('kantorpusat.edit', compact('kantor'));
     }
 
     /**
@@ -68,7 +85,21 @@ class KantorController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request,[
+            'NamaKantorPusat'=>'required|min:3|max:50',
+            'AlamatKantorPusat'=>'required|min:3'
+        ], ['NamaKantorPusat.required'=>'Isi nama kantor pusat terlebih dahulu',
+            'NamaKantorPusat.min'=>'Minimal 3 karakter',
+            'NamaKantorPusat.max'=>'Jangan lebih dari 50 karakter',
+            'AlamatKantorPusat.required'=>'Isi alamat kantor pusat terlebih dahulu',
+            'AlamatKantorPusat.min'=>'Minimal 3 karakter']);
+
+            Kantor::find($id)->update([
+                'NamaKantorPusat' => $request->get('NamaKantorPusat'),
+                'AlamatKantorPusat' => $request->get('AlamatKantorPusat')
+              ]);
+
+            return redirect()->route('kan')->with('message', 'Kantor Pusat berhasil diubah');
     }
 
     /**
@@ -79,6 +110,8 @@ class KantorController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $kantor = Kantor::find($id);
+        $kantor->delete();
+        return redirect()->route('kan')->with('message', 'Kantor berhasil dihapus');
     }
 }
