@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Resi;
 
 class ResiController extends Controller
 {
@@ -13,7 +14,8 @@ class ResiController extends Controller
      */
     public function index()
     {
-        //
+        $resis = Resi::all();
+        return view('resi.index', compact('resis'));
     }
 
     /**
@@ -23,7 +25,7 @@ class ResiController extends Controller
      */
     public function create()
     {
-        //
+        return view('resi.create');
     }
 
     /**
@@ -56,7 +58,8 @@ class ResiController extends Controller
      */
     public function edit($id)
     {
-        //
+        $resi = Resi::find($id);
+        return view ('resi.edit', compact('resi'));
     }
 
     /**
@@ -79,6 +82,8 @@ class ResiController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $resi = Resi::find($id);
+        $resi->delete();
+        return redirect()->route('peng')->with('message', 'Resi berhasil dihapus');
     }
 }
