@@ -39,7 +39,7 @@
                         <th scope="row" style="text-align:center;">{{ $loop->iteration }}</th>
                         <td style="text-align:center;">{{ $resi->NamaPenerima }}</td>
                         <td style="text-align:center;">{{ $resi->AlamatPenerima }}</td>
-                        <td style="text-align:center;"><a href="{{ route('editpen', [$resi->NoResi]) }}"
+                        <td style="text-align:center;"><a href="{{ route('editres', [$resi->NoResi]) }}"
                                 class="btn btn-info">Edit</a></td>
                         <td style="text-align:center;"><button type="button" class="btn btn-danger" data-toggle="modal"
                                 data-target="#exampleModal{{$resi->NoResi}}">Hapus</button></td>
@@ -48,7 +48,7 @@
                     <div class="modal fade" id="exampleModal{{$resi->NoResi}}" tabindex="-1" role="dialog"
                         aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">
-                            <form action="{{ route('deletepen', [$resi->NoResi]) }}" method="POST">@csrf
+                            <form action="{{ route('deleteres', [$resi->NoResi]) }}" method="POST">@csrf
                                 {{method_field('DELETE')}}
                                 <div class="modal-content">
                                     <div class="modal-header" style="display:flex;">

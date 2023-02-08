@@ -84,6 +84,6 @@ class ResiController extends Controller
     {
         $resi = Resi::find($id);
         $resi->delete();
-        return redirect()->route('peng')->with('message', 'Resi berhasil dihapus');
+        return redirect()->route('res')->with('message', 'Resi berhasil dihapus');
     }
 }

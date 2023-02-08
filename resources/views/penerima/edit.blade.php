@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
 <div class="row justify-content-center">
-    <div class="col-lg-7">
+    <div class="col-lg-8">
         <div class="card">
         <div class="card-header py-3">
           <h5 class="card-title">Create Penerima</h5>
@@ -37,7 +37,7 @@
                     <br>
                     <div class="row mb-3">
                         <div class="col-sm-10">
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <button type="submit" class="btn btn-primary">Edit</button>
                         </div>
                     </div>
 
