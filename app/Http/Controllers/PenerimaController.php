@@ -36,7 +36,21 @@ class PenerimaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            'NamaPenerima'=>'required|min:3|max:50',
+            'AlamatPenerima'=>'required|min:3'
+        ], ['NamaPenerima.required'=>'Isi nama penerima terlebih dahulu',
+            'NamaPenerima.min'=>'Minimal 3 karakter',
+            'NamaPenerima.max'=>'Jangan lebih dari 50 karakter',
+            'AlamatPenerima.required'=>'Isi alamat penerima terlebih dahulu',
+            'AlamatPenerima.min'=>'Minimal 3 karakter']);
+
+            Penerima::create([
+                'NamaPenerima' => $request->get('NamaPenerima'),
+                'AlamatPenerima' => $request->get('AlamatPenerima')
+              ]);
+
+            return redirect()->route('pen')->with('message', 'Penerima berhasil disimpan'); 
     }
 
     /**
@@ -71,7 +85,21 @@ class PenerimaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request,[
+            'NamaPenerima'=>'required|min:3|max:50',
+            'AlamatPenerima'=>'required|min:3'
+        ], ['NamaPenerima.required'=>'Isi nama penerima terlebih dahulu',
+            'NamaPenerima.min'=>'Minimal 3 karakter',
+            'NamaPenerima.max'=>'Jangan lebih dari 50 karakter',
+            'AlamatPenerima.required'=>'Isi alamat penerima terlebih dahulu',
+            'AlamatPenerima.min'=>'Minimal 3 karakter']);
+
+            Penerima::find($id)->update([
+                'NamaPenerima' => $request->get('NamaPenerima'),
+                'AlamatPenerima' => $request->get('AlamatPenerima')
+              ]);
+
+            return redirect()->route('pen')->with('message', 'Penerima berhasil diubah');
     }
 
     /**

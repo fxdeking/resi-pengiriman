@@ -26,7 +26,7 @@
                     <div class="row mb-3">
                         <label for="inputText" class="col-sm-2 col-form-label">Alamat Kantor Pusat</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control @error('AlamatKantorPusat') is-invalid @enderror" name="AlamatKantorPusat" value="{{ $kantor->AlamatKantorPusat }}">
+                        <textarea class="form-control @error('AlamatKantorPusat') is-invalid @enderror" name="AlamatKantorPusat" rows="2">{{ $kantor->AlamatKantorPusat }}</textarea>
                             @error('AlamatKantorPusat')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>

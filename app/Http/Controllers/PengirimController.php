@@ -39,7 +39,7 @@ class PengirimController extends Controller
         $this->validate($request,[
             'NamaPengirim'=>'required|min:3|max:50',
             'NoTeleponPengirim'=>'required|min:3|max:15'
-        ], ['NamaPengirim.required'=>'Isi nama kantor pusat terlebih dahulu',
+        ], ['NamaPengirim.required'=>'Isi nama pengirim terlebih dahulu',
             'NamaPengirim.min'=>'Minimal 3 karakter',
             'NamaPengirim.max'=>'Jangan lebih dari 50 karakter',
             'NoTeleponPengirim.required'=>'Isi nomor telepon pengirim terlebih dahulu',
@@ -89,12 +89,12 @@ class PengirimController extends Controller
         $this->validate($request,[
             'NamaPengirim'=>'required|min:3|max:50',
             'NoTeleponPengirim'=>'required|min:3|max:15'
-        ], ['NamaPengirim.required'=>'Isi nama kantor pusat terlebih dahulu',
+        ], ['NamaPengirim.required'=>'Isi nama pengirim terlebih dahulu',
             'NamaPengirim.min'=>'Minimal 3 karakter',
             'NamaPengirim.max'=>'Jangan lebih dari 50 karakter',
             'NoTeleponPengirim.required'=>'Isi nomor telepon pengirim terlebih dahulu',
             'NoTeleponPengirim.min'=>'Minimal 3 karakter',
-            'NoTeleponPengirim'=>'Jangan lebih dari 15 karakter']);
+            'NoTeleponPengirim.max'=>'Jangan lebih dari 15 karakter']);
 
             Pengirim::find($id)->update([
                 'NamaPengirim' => $request->get('NamaPengirim'),

@@ -15,7 +15,7 @@
         </div>
             <div class="card-body">
                 
-        <a class="btn btn-info" href="{{ route('inputpeng') }}">[+] Create Penerima</a><br>
+        <a class="btn btn-info" href="{{ route('inputpen') }}">[+] Create Penerima</a><br>
 <br>
               <!-- Table with hoverable rows -->
               <table class="table table-hover table-bordered" style="text-align:center;">
@@ -34,7 +34,7 @@
                         <th scope="row" style="text-align:center;">{{ $loop->iteration }}</th>
                         <td style="text-align:center;">{{ $penerima->NamaPenerima }}</td>
                         <td style="text-align:center;">{{ $penerima->AlamatPenerima }}</td>
-                        <td style="text-align:center;"><a href="{{ route('editpeng', [$penerima->NoPenerima]) }}"
+                        <td style="text-align:center;"><a href="{{ route('editpen', [$penerima->NoPenerima]) }}"
                                 class="btn btn-info">Edit</a></td>
                         <td style="text-align:center;"><button type="button" class="btn btn-danger" data-toggle="modal"
                                 data-target="#exampleModal{{$penerima->NoPenerima}}">Hapus</button></td>
@@ -43,7 +43,7 @@
                     <div class="modal fade" id="exampleModal{{$penerima->NoPenerima}}" tabindex="-1" role="dialog"
                         aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">
-                            <form action="{{ route('deletepeng', [$penerima->NoPenerima]) }}" method="POST">@csrf
+                            <form action="{{ route('deletepen', [$penerima->NoPenerima]) }}" method="POST">@csrf
                                 {{method_field('DELETE')}}
                                 <div class="modal-content">
                                     <div class="modal-header" style="display:flex;">
