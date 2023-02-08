@@ -34,10 +34,14 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
+                
+
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
-
+                    <form class="mt-3 ml-5">
+                        <input type='text' id='input' onkeyup='searchTable()' autocomplete="off" placeholder="Search">
+                    </form>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -51,6 +55,9 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('pen') }}">{{ __('Penerima') }}</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('bar') }}">{{ __('Barang') }}</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('res') }}">{{ __('Resi Pengiriman') }}</a>
@@ -96,4 +103,34 @@
         </main>
     </div>
 </body>
+<script>
+    function searchTable() {
+        var input;
+        var saring;
+        var status; 
+        var tbody; 
+        var tr; 
+        var td;
+        var i; 
+        var j;
+        input = document.getElementById("input");
+        saring = input.value.toUpperCase();
+        tbody = document.getElementsByTagName("tbody")[0];;
+        tr = tbody.getElementsByTagName("tr");
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td");
+            for (j = 0; j < td.length; j++) {
+                if (td[j].innerHTML.toUpperCase().indexOf(saring) > -1) {
+                    status = true;
+                }
+            }
+            if (status) {
+                tr[i].style.display = "";
+                status = false;
+            } else {
+                tr[i].style.display = "none";
+            }
+        }
+    }
+</script>
 </html>

@@ -37,17 +37,22 @@ class KantorController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
+            'NpwpKantorPusat'=>'required|min:3|max:20',
             'NamaKantorPusat'=>'required|min:3|max:50',
             'AlamatKantorPusat'=>'required|min:3'
         ], ['NamaKantorPusat.required'=>'Isi nama kantor pusat terlebih dahulu',
             'NamaKantorPusat.min'=>'Minimal 3 karakter',
             'NamaKantorPusat.max'=>'Jangan lebih dari 50 karakter',
+            'NpwpKantorPusat.required'=>'Isi NPWP kantor pusat terlebih dahulu',
+            'NpwpKantorPusat.min'=>'Minimal 3 karakter',
+            'NpwpKantorPusat.max'=>'Jangan lebih dari 20 karakter',
             'AlamatKantorPusat.required'=>'Isi alamat kantor pusat terlebih dahulu',
             'AlamatKantorPusat.min'=>'Minimal 3 karakter']);
 
             Kantor::create([
-                'NamaKantorPusat' => $request->get('NamaKantorPusat'),
-                'AlamatKantorPusat' => $request->get('AlamatKantorPusat')
+                'NpwpKantorPusat'=>$request->get('NpwpKantorPusat'),
+                'NamaKantorPusat'=>$request->get('NamaKantorPusat'),
+                'AlamatKantorPusat'=>$request->get('AlamatKantorPusat')
               ]);
 
             return redirect()->route('kan')->with('message', 'Kantor Pusat berhasil disimpan');
@@ -86,15 +91,20 @@ class KantorController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request,[
+            'NpwpKantorPusat'=>'required|min:3|max:20',
             'NamaKantorPusat'=>'required|min:3|max:50',
             'AlamatKantorPusat'=>'required|min:3'
         ], ['NamaKantorPusat.required'=>'Isi nama kantor pusat terlebih dahulu',
             'NamaKantorPusat.min'=>'Minimal 3 karakter',
             'NamaKantorPusat.max'=>'Jangan lebih dari 50 karakter',
+            'NpwpKantorPusat.required'=>'Isi NPWP kantor pusat terlebih dahulu',
+            'NpwpKantorPusat.min'=>'Minimal 3 karakter',
+            'NpwpKantorPusat.max'=>'Jangan lebih dari 20 karakter',
             'AlamatKantorPusat.required'=>'Isi alamat kantor pusat terlebih dahulu',
             'AlamatKantorPusat.min'=>'Minimal 3 karakter']);
 
             Kantor::find($id)->update([
+                'NpwpKantorPusat' => $request->get('NpwpKantorPusat'),
                 'NamaKantorPusat' => $request->get('NamaKantorPusat'),
                 'AlamatKantorPusat' => $request->get('AlamatKantorPusat')
               ]);

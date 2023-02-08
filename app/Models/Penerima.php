@@ -11,4 +11,8 @@ class Penerima extends Model
     protected $primaryKey="NoPenerima";
     protected $table = "penerima";
     protected $fillable = ['NamaPenerima', 'AlamatPenerima'];
+
+    public function resi(){
+        return $this->hasMany(Resi::class);
+    }
 }

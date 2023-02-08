@@ -44,7 +44,7 @@ class PengirimController extends Controller
             'NamaPengirim.max'=>'Jangan lebih dari 50 karakter',
             'NoTeleponPengirim.required'=>'Isi nomor telepon pengirim terlebih dahulu',
             'NoTeleponPengirim.min'=>'Minimal 3 karakter',
-            'NoTeleponPengirim'=>'Jangan lebih dari 15 karakter']);
+            'NoTeleponPengirim.max'=>'Jangan lebih dari 15 karakter']);
 
             Pengirim::create([
                 'NamaPengirim' => $request->get('NamaPengirim'),

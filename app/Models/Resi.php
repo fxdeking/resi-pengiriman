@@ -23,4 +23,8 @@ class Resi extends Model
     public function penerima(){
         return $this->belongsTo(Penerima::class);
     }
+
+    public function barang(){
+        return $this->belongsTo(Barang::class);
+    }
 }

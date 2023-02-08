@@ -10,5 +10,9 @@ class Kantor extends Model
     use HasFactory;
     protected $primaryKey="NoPusat";
     protected $table = "kantorpusat";
-    protected $fillable = ['AlamatKantorPusat', 'NamaKantorPusat'];
+    protected $fillable = ['AlamatKantorPusat', 'NamaKantorPusat', 'NpwpKantorPusat'];
+
+    public function resi(){
+        return $this->hasMany(Resi::class);
+    }
 }

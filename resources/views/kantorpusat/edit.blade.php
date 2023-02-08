@@ -12,6 +12,18 @@
             <form action="{{ route('updatekan', [$kantor->NoPusat]) }}" method="POST">
                     @csrf
                     <div class="row mb-3">
+                        <label for="inputText" class="col-sm-2 col-form-label">NPWP Kantor Pusat</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control @error('NpwpKantorPusat') is-invalid @enderror" name="NpwpKantorPusat" value="{{ $kantor->NpwpKantorPusat }}">
+                            @error('NpwpKantorPusat')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
                         <label for="inputText" class="col-sm-2 col-form-label">Nama Kantor Pusat</label>
                         <div class="col-sm-10">
                             <input type="text" class="form-control @error('NamaKantorPusat') is-invalid @enderror" name="NamaKantorPusat" value="{{ $kantor->NamaKantorPusat }}">

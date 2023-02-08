@@ -50,6 +50,15 @@ Route::group(['prefix'=>'pengirim'], function(){
     Route::delete('/delete/{id}', 'PengirimController@destroy')->name('deletepeng')->middleware('auth');
 });
 
+Route::group(['prefix'=>'barang'], function(){
+    Route::get('/', 'BarangController@index')->name('bar')->middleware('auth');
+    Route::get('/input', 'BarangController@create')->name('inputbar')->middleware('auth');
+    Route::post('/tambah', 'BarangController@store')->name('tambahbar')->middleware('auth');
+    Route::get('/edit/{id}', 'BarangController@edit')->name('editbar')->middleware('auth');
+    Route::post('/update/{id}', 'BarangController@update')->name('updatebar')->middleware('auth');
+    Route::delete('/delete/{id}', 'BarangController@destroy')->name('deletebar')->middleware('auth');
+});
+
 Route::group(['prefix'=>'resipengiriman'], function(){
     Route::get('/', 'ResiController@index')->name('res')->middleware('auth');
     Route::get('/input', 'ResiController@create')->name('inputres')->middleware('auth');

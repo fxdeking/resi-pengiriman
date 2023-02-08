@@ -5,12 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Pengirim extends Model
+class Barang extends Model
 {
     use HasFactory;
-    protected $primaryKey="NoPengirim";
-    protected $table = "pengirim";
-    protected $fillable = ['NamaPengirim', 'NoTeleponPengirim'];
+    protected $primaryKey="NoBarang";
+    protected $table = "barang";
+    protected $fillable = ['NamaBarang', 'BeratBarang'];
 
     public function resi(){
         return $this->hasMany(Resi::class);

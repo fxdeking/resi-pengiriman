@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
 <div class="row justify-content-center">
-    <div class="col-lg-7">
+    <div class="col-lg-9">
         <div class="card">
         <div class="card-header py-3">
           <h5 class="card-title">List Kantor Pusat</h5>
@@ -22,6 +22,7 @@
                 <thead>
                   <tr>
                     <th scope="col" width="50px">No</th>
+                    <th scope="col">NPWP Kantor Pusat</th>
                     <th scope="col">Nama Kantor Pusat</th>
                     <th scope="col">Alamat Kantor Pusat</th>
                     <th scope="col" colspan="2" width="20%">Aksi</th>
@@ -32,6 +33,7 @@
                     @foreach ($kantors as $kantor)
                     <tr>
                         <th scope="row" style="text-align:center;">{{ $loop->iteration }}</th>
+                        <td style="text-align:center;">{{ $kantor->NpwpKantorPusat }}</td>
                         <td style="text-align:center;">{{ $kantor->NamaKantorPusat }}</td>
                         <td style="text-align:center;">{{ $kantor->AlamatKantorPusat }}</td>
                         <td style="text-align:center;"><a href="{{ route('editkan', [$kantor->NoPusat]) }}"
@@ -66,7 +68,7 @@
                     </div>
                     @endforeach
                     @else
-                    <td colspan="4" style="text-align:center;"><br>
+                    <td colspan="5" style="text-align:center;"><br>
                         <p>Tidak ada kantor pusat yang dapat ditampilkan.</p>
                     </td>
                     @endif
