@@ -47,6 +47,12 @@
                             <a class="nav-link" href="{{ route('kan') }}">{{ __('Kantor Pusat') }}</a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link" href="{{ route('peng') }}">{{ __('Pengirim') }}</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('pen') }}">{{ __('Penerima') }}</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" href="{{ route('res') }}">{{ __('Resi Pengiriman') }}</a>
                         </li>
                         @guest

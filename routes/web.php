@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\KantorController;
+use App\Http\Controllers\PengirimController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,6 +30,24 @@ Route::group(['prefix'=>'kantorpusat'], function(){
     Route::get('/edit/{id}', 'KantorController@edit')->name('editkan')->middleware('auth');
     Route::post('/update/{id}', 'KantorController@update')->name('updatekan')->middleware('auth');
     Route::delete('/delete/{id}', 'KantorController@destroy')->name('deletekan')->middleware('auth');
+});
+
+Route::group(['prefix'=>'penerima'], function(){
+    Route::get('/', 'PenerimaController@index')->name('pen')->middleware('auth');
+    Route::get('/input', 'PenerimaController@create')->name('inputpen')->middleware('auth');
+    Route::post('/tambah', 'PenerimaController@store')->name('tambahpen')->middleware('auth');
+    Route::get('/edit/{id}', 'PenerimaController@edit')->name('editpen')->middleware('auth');
+    Route::post('/update/{id}', 'PenerimaController@update')->name('updatepen')->middleware('auth');
+    Route::delete('/delete/{id}', 'PenerimaController@destroy')->name('deletepen')->middleware('auth');
+});
+
+Route::group(['prefix'=>'pengirim'], function(){
+    Route::get('/', 'PengirimController@index')->name('peng')->middleware('auth');
+    Route::get('/input', 'PengirimController@create')->name('inputpeng')->middleware('auth');
+    Route::post('/tambah', 'PengirimController@store')->name('tambahpeng')->middleware('auth');
+    Route::get('/edit/{id}', 'PengirimController@edit')->name('editpeng')->middleware('auth');
+    Route::post('/update/{id}', 'PengirimController@update')->name('updatepeng')->middleware('auth');
+    Route::delete('/delete/{id}', 'PengirimController@destroy')->name('deletepeng')->middleware('auth');
 });
 
 Route::group(['prefix'=>'resipengiriman'], function(){
