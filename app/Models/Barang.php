@@ -13,6 +13,6 @@ class Barang extends Model
     protected $fillable = ['NamaBarang', 'BeratBarang'];
 
     public function resi(){
-        return $this->hasMany(Resi::class);
+        return $this->belongsTo(Resi::class);
     }
 }

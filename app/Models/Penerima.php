@@ -13,6 +13,6 @@ class Penerima extends Model
     protected $fillable = ['NamaPenerima', 'AlamatPenerima'];
 
     public function resi(){
-        return $this->hasMany(Resi::class);
+        return $this->belongsTo(Resi::class);
     }
 }

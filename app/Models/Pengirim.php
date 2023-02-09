@@ -13,6 +13,6 @@ class Pengirim extends Model
     protected $fillable = ['NamaPengirim', 'NoTeleponPengirim'];
 
     public function resi(){
-        return $this->hasMany(Resi::class);
+        return $this->belongsTo(Resi::class);
     }
 }

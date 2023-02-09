@@ -13,6 +13,6 @@ class Kantor extends Model
     protected $fillable = ['AlamatKantorPusat', 'NamaKantorPusat', 'NpwpKantorPusat'];
 
     public function resi(){
-        return $this->hasMany(Resi::class);
+        return $this->belongsTo(Resi::class);
     }
 }

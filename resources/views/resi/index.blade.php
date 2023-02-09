@@ -23,9 +23,9 @@
                   <tr>
                     <th scope="col" width="50px">No</th>
                     <th scope="col">Nomor Resi</th>
-                    <th scope="col">Tanggal Pengiriman</th>
                     <th scope="col">Nama Barang</th>
                     <th scope="col">Kuantitas</th>
+                    <th scope="col">Tanggal Pengiriman</th>
                     <th scope="col">Nama Kantor Pusat</th>
                     <th scope="col">Nama Pengirim</th>
                     <th scope="col">Nama Penerima</th>
@@ -37,18 +37,23 @@
                     @foreach ($resis as $resi)
                     <tr>
                         <th scope="row" style="text-align:center;">{{ $loop->iteration }}</th>
-                        <td style="text-align:center;">{{ $resi->NamaPenerima }}</td>
-                        <td style="text-align:center;">{{ $resi->AlamatPenerima }}</td>
-                        <td style="text-align:center;"><a href="{{ route('editres', [$resi->NoResi]) }}"
+                        <td style="text-align:center;">{{ $resi->NoResi }}</td>
+                        <td style="text-align:center;">{{ $resi->barang->NamaBarang }}</td>
+                        <td style="text-align:center;">{{ $resi->Kuantitas }}</td>
+                        <td style="text-align:center;">{{ $resi->TanggalPengiriman }}</td>
+                        <td style="text-align:center;">{{ $resi->kantor->NamaKantorPusat }}</td>
+                        <td style="text-align:center;">{{ $resi->pengirim->NamaPengirim }}</td>
+                        <td style="text-align:center;">{{ $resi->penerima->NamaPenerima }}</td>
+                        <td style="text-align:center;"><a href="{{ route('editres', [$resi->NoResiPengiriman]) }}"
                                 class="btn btn-info">Edit</a></td>
                         <td style="text-align:center;"><button type="button" class="btn btn-danger" data-toggle="modal"
-                                data-target="#exampleModal{{$resi->NoResi}}">Hapus</button></td>
+                                data-target="#exampleModal{{$resi->NoResiPengiriman}}">Hapus</button></td>
                     </tr>
 
-                    <div class="modal fade" id="exampleModal{{$resi->NoResi}}" tabindex="-1" role="dialog"
+                    <div class="modal fade" id="exampleModal{{$resi->NoResiPengiriman}}" tabindex="-1" role="dialog"
                         aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">
-                            <form action="{{ route('deleteres', [$resi->NoResi]) }}" method="POST">@csrf
+                            <form action="{{ route('deleteres', [$resi->NoResiPengiriman]) }}" method="POST">@csrf
                                 {{method_field('DELETE')}}
                                 <div class="modal-content">
                                     <div class="modal-header" style="display:flex;">
