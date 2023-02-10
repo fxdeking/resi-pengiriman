@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Resi;
+use \PDF;
 
 class ResiController extends Controller
 {
@@ -86,7 +87,8 @@ class ResiController extends Controller
      */
     public function show($id)
     {
-        //
+        $resi = Resi::find($id);
+        return view ('resi.detail', compact('resi'));
     }
 
     /**
@@ -163,5 +165,18 @@ class ResiController extends Controller
         $resi = Resi::find($id);
         $resi->delete();
         return redirect()->route('res')->with('message', 'Resi berhasil dihapus');
+    }
+
+    public function cetakresi($id)
+    {
+        $resi = Resi::find($id);
+        return view ('resi.cetakresi', compact('resi'));
+    }
+
+    public function cetak($id)
+    {
+        $resi = Resi::find($id);
+        $cetak = PDF::loadview('resi.cetak', compact('resi'));
+        return $cetak->download('Resi Pengiriman.pdf');
     }
 }

@@ -29,6 +29,7 @@
                     <th scope="col">Nama Kantor Pusat</th>
                     <th scope="col">Nama Pengirim</th>
                     <th scope="col">Nama Penerima</th>
+                    <th scope="col">Detail</th>
                     <th scope="col" colspan="2" width="10%">Aksi</th>
                   </tr>
                 </thead>
@@ -44,8 +45,8 @@
                         <td style="text-align:center;">{{ $resi->kantor->NamaKantorPusat }}</td>
                         <td style="text-align:center;">{{ $resi->pengirim->NamaPengirim }}</td>
                         <td style="text-align:center;">{{ $resi->penerima->NamaPenerima }}</td>
-                        <td style="text-align:center;"><a href="{{ route('editres', [$resi->NoResiPengiriman]) }}"
-                                class="btn btn-info">Edit</a></td>
+                        <td style="text-align:center;"><a href="{{ route('detailres', [$resi->NoResiPengiriman]) }}" class="btn btn-outline-primary">Detail</a></td>
+                        <td style="text-align:center;"><a href="{{ route('editres', [$resi->NoResiPengiriman]) }}" class="btn btn-info">Edit</a></td>
                         <td style="text-align:center;"><button type="button" class="btn btn-danger" data-toggle="modal"
                                 data-target="#exampleModal{{$resi->NoResiPengiriman}}">Hapus</button></td>
                     </tr>
@@ -76,7 +77,7 @@
                     </div>
                     @endforeach
                     @else
-                    <td colspan="10" style="text-align:center;"><br>
+                    <td colspan="11" style="text-align:center;"><br>
                         <p>Tidak ada resi yang dapat ditampilkan.</p>
                     </td>
                     @endif

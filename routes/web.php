@@ -63,6 +63,9 @@ Route::group(['prefix'=>'resipengiriman'], function(){
     Route::get('/', 'ResiController@index')->name('res')->middleware('auth');
     Route::get('/input', 'ResiController@create')->name('inputres')->middleware('auth');
     Route::post('/tambah', 'ResiController@store')->name('tambahres')->middleware('auth');
+    Route::get('/detail/{id}', 'ResiController@show')->name('detailres')->middleware('auth');
+    Route::get('/cetakresi/{id}', 'ResiController@cetakresi')->name('cetakres')->middleware('auth');
+    Route::get('/cetak/{id}', 'ResiController@cetak')->name('ceres')->middleware('auth');
     Route::get('/edit/{id}', 'ResiController@edit')->name('editres')->middleware('auth');
     Route::post('/update/{id}', 'ResiController@update')->name('updateres')->middleware('auth');
     Route::delete('/delete/{id}', 'ResiController@destroy')->name('deleteres')->middleware('auth');
